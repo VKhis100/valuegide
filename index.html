@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как донести ценность своей работы - Swiss Brutalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0F172A;
+            --cloud: #F6F7FB;
+            --teal: #14B8A6;
+            --amber: #F59E0B;
+            --slate: #64748B;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: #E5E7EB;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.15);
+        }
+
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            body { background: white; }
+        }
+
+        /* ОБЛОЖКА - ТОЛЬКО ЧЕРНАЯ ЧАСТЬ */
+        .cover-full {
+            background: var(--black);
+            height: 297mm;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .cover-full::after {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            right: 60px;
+            bottom: 60px;
+            border: 3px solid white;
+        }
+
+        .cover-meta {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-title-big {
+            font-size: 120px;
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -3px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 60px;
+        }
+
+        .cover-subtitle-inline {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+            opacity: 0.95;
+            max-width: 800px;
+        }
+
+        /* ТИПОГРАФИКА - BRUTALIST */
+        h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--black);
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--black);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--black);
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--ink);
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+
+        /* CONTENT WRAPPER */
+        .content-wrapper {
+            padding: 60px;
+        }
+
+        .content-tight {
+            padding: 40px 60px;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            border: 8px solid var(--black);
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .intro-label {
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 20px;
+        }
+
+        /* ПРАВИЛО - BRUTALIST STYLE */
+        .rule-section {
+            margin: 60px 0;
+        }
+
+        .rule-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 0;
+            margin-bottom: 40px;
+        }
+
+        .rule-number-box {
+            background: var(--black);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            font-weight: 900;
+            line-height: 1;
+            border: 8px solid var(--black);
+        }
+
+        .rule-content-box {
+            background: var(--teal);
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            border: 8px solid var(--black);
+            border-left: none;
+        }
+
+        .rule-title {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .rule-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* BLACK BOX - ДЛЯ ВАЖНЫХ МЫСЛЕЙ */
+        .black-box {
+            background: var(--black);
+            color: white;
+            padding: 50px;
+            margin: 40px 0;
+            border: 8px solid var(--black);
+        }
+
+        .black-box h3,
+        .black-box h4,
+        .black-box p {
+            color: white;
+        }
+
+        .black-box-quote {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* ПРИМЕРЫ - СТРОГИЕ БЛОКИ */
+        .example-box {
+            border: 6px solid var(--black);
+            padding: 30px;
+            margin: 25px 0;
+            background: white;
+        }
+
+        .example-wrong {
+            background: white;
+            border-color: var(--slate);
+        }
+
+        .example-right {
+            background: var(--teal);
+            border-color: var(--black);
+            color: white;
+        }
+
+        .example-right h4,
+        .example-right p {
+            color: white;
+        }
+
+        .example-label {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* СПИСКИ */
+        ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 19px;
+        }
+
+        li::marker {
+            color: var(--teal);
+            font-weight: 900;
+        }
+
+        /* SENSE BOX */
+        .sense-box {
+            background: white;
+            border-left: 15px solid var(--teal);
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .sense-label {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 12px;
+        }
+
+        .sense-box p {
+            font-size: 18px;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* GEOMETRIC DIVIDER */
+        .geo-divider {
+            height: 8px;
+            background: var(--black);
+            margin: 50px 0;
+        }
+
+        .geo-divider-teal {
+            height: 8px;
+            background: var(--teal);
+            margin: 50px 0;
+        }
+
+        /* NEGATIVE SPACE BOX */
+        .space-box {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .space-title {
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .space-subtitle {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--slate);
+        }
+
+        /* CTA - BRUTALIST STYLE */
+        .cta-brutalist {
+            background: var(--amber);
+            border: 8px solid var(--black);
+            padding: 50px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .cta-brutalist h3 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .cta-brutalist p {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--black);
+            color: white;
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            margin-top: 20px;
+            border: 4px solid var(--black);
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: var(--black);
+        }
+
+        /* GRID LAYOUT */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .grid-item {
+            border: 4px solid var(--black);
+            padding: 25px;
+        }
+
+        /* FOOTER */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--black);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .page-number-brutalist {
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        /* UTILITIES */
+        strong {
+            font-weight: 700;
+        }
+
+        .text-teal { color: var(--teal); }
+        .text-amber { color: var(--amber); }
+        .uppercase { text-transform: uppercase; }
+
+        /* ASYMMETRIC LAYOUT */
+        .asymmetric {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .asymmetric-reverse {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ОБЛОЖКА - ТОЛЬКО ЧЕРНАЯ ЧАСТЬ -->
+<div class="page">
+    <div class="cover-full">
+        <div class="cover-meta">ГАЙД • КОУЧИ • ПСИХОЛОГИ</div>
+        <div class="cover-title-big">
+            КАК<br>
+            ДО&shy;НЕС&shy;ТИ<br>
+            ЦЕН&shy;НОСТЬ
+        </div>
+        <div class="cover-subtitle-inline">
+            5 правил первой встречи, после которых клиенты сами просят вас взять их в работу
+        </div>
+    </div>
+</div>
+
+<!-- СТРАНИЦА 2: ВСТУПЛЕНИЕ -->
+<div class="page">
+    <div class="content-wrapper" style="padding-bottom: 100px;">
+        <h1>ВСТУПЛЕНИЕ</h1>
+        <h2 style="font-weight: 600; font-size: 36px; margin-bottom: 40px;">Почему клиенты уходят "подумать" и не возвращаются?</h2>
+        
+        <div class="intro-section">
+            <div class="intro-label">ДЛЯ КОГО ЭТОТ ГАЙД</div>
+            <ul>
+                <li>Для коучей, психологов и помогающих практиков, которые <strong>боятся или стесняются продавать</strong> свои услуги</li>
+                <li>Для тех, кто чувствует себя <strong>"продажником"</strong>, когда рассказывает о своей работе, и это противно</li>
+                <li>Для специалистов, которые провели отличную встречу, клиент был в восторге — но <strong>ушел "подумать" и исчез</strong></li>
+                <li>Для тех, кто не понимает, как донести ценность своей работы, <strong>не втюхивая и не навязываясь</strong></li>
+            </ul>
+        </div>
+        
+        <div class="geo-divider"></div>
+        
+        <h3>Какую проблему решает этот гайд:</h3>
+        
+        <p>Знакомая ситуация? Потенциальный клиент пришел на встречу. Вы рассказали о себе, о своих методах, показали дипломы, поделились кейсами. Человек кивал, говорил «как интересно!», «я подумаю».</p>
+        
+        <p>И ушел. Навсегда.</p>
+        
+        <p>Или хуже — написал через неделю: «Спасибо, но я решил пока не начинать».</p>
+        
+        <p>И вы в растерянности. Вы же ВСЁ рассказали! Показали свою экспертность! Объяснили, как здорово вы работаете!</p>
+        
+        <h4>Почему не сработало?</h4>
+        
+        <p>Потому что вы пытались <strong>ДОНЕСТИ ценность</strong> — объяснить, доказать, убедить.</p>
+        
+        <p>А человек не хочет, чтобы ему что-то доносили. Он хочет <strong>САМ ПОНЯТЬ</strong>, что ему это нужно.</p>
+        
+        <p>Вы продавали. А люди ненавидят, когда им продают.</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">
+                "Вы боитесь быть навязчивым — поэтому просто рассказываете о себе и надеетесь, что человек сам поймет вашу ценность"
+            </p>
+        </div>
+        
+        <p>Или наоборот — вы так боитесь потерять клиента, что начинаете активно убеждать, доказывать, показывать регалии. И человек чувствует давление и убегает.</p>
+        
+        <p style="font-size: 24px; font-weight: 700; margin-top: 30px;">ОБА ПОДХОДА НЕ РАБОТАЮТ.</p>
+    </div>
+    
+    <div class="page-footer">
+        <div>ДОНЕСЕНИЕ ЦЕННОСТИ</div>
+        <div class="page-number-brutalist">02</div>
+    </div>
+</div>
+
+<!-- СТРАНИЦА 3: ЧТО БУДЕТ -->
+<div class="page">
+    <div class="content-wrapper" style="padding-bottom: 100px;">
+        <h3>Что будет после применения этих правил:</h3>
+        
+        <div class="grid-2">
+            <div class="grid-item">
+                <h4>01</h4>
+                <p>Вы <strong>перестанете чувствовать себя «продажником»</strong> — потому что не будете ничего продавать. Вы будете создавать условия для осознания</p>
+            </div>
+            
+            <div class="grid-item">
+                <h4>02</h4>
+                <p>Клиенты <strong>перестанут уходить "подумать"</strong> — они будут принимать решение ПРЯМО на встрече, потому что сами поймут, что им это нужно</p>
+            </div>
+            
+            <div class="grid-item">
+                <h4>03</h4>
+                <p>Вы <strong>перестанете доказывать свою экспертность</strong> — потому что поймете, что клиенту не нужны ваши дипломы. Ему нужно понять, что ВЫ можете решить ЕГО проблему</p>
+            </div>
+            
+            <div class="grid-item">
+                <h4>04</h4>
+                <p>У вас появится <strong>четкий алгоритм первой встречи</strong> — вы будете знать, что спрашивать и что говорить, чтобы человек сам попросился в работу</p>
+            </div>
+        </div>
+        
+        <div class="space-box">
+            <div class="space-title">ДАВАЙТЕ НАЧНЕМ</div>
+            <div class="geo-divider-teal"></div>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ЧТО ВАС ЖДЁТ</div>
+        <div class="page-number-brutalist">03</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 1 - СТРАНИЦА 1 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-top: 40px; padding-bottom: 100px;">
+        <div class="rule-section">
+            <div class="rule-grid">
+                <div class="rule-number-box">1</div>
+                <div class="rule-content-box">
+                    <div class="rule-title">НЕ РАССКАЗЫВАЙТЕ О СЕБЕ. ВЫЯВЛЯЙТЕ ЗАПРОС</div>
+                    <div class="rule-subtitle">Клиенту не интересны вы. Клиенту интересен он сам</div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Что это значит:</h3>
+        
+        <p>Первая ошибка большинства специалистов — они начинают встречу с рассказа о себе.</p>
+        
+        <p>«Я коуч, училась там-то, работаю в таком-то подходе, помогаю людям с тем-то...»</p>
+        
+        <p>И человек вежливо слушает. Кивает. А внутри думает: «И что? Причем тут я?»</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">КЛИЕНТУ НЕ ИНТЕРЕСНЫ ВЫ. КЛИЕНТУ ИНТЕРЕСЕН ОН САМ.</p>
+        </div>
+        
+        <p>Он пришел не узнать, какой вы крутой специалист. Он пришел понять: <strong>«А сможет ли этот человек помочь МНЕ?»</strong></p>
+        
+        <p>И пока вы рассказываете о себе — он не получает ответ на этот вопрос.</p>
+        
+        <div class="example-box example-wrong">
+            <div class="example-label">❌ КАК ОБЫЧНО ДЕЛАЮТ (И ЭТО НЕ РАБОТАЕТ):</div>
+            <p><strong>«Давайте я расскажу о себе. Я коуч, закончила школу X, работаю 5 лет, помогаю людям находить цель, выстраивать карьеру, улучшать отношения. У меня много кейсов...»</strong></p>
+            <p><strong>Почему это плохо?</strong> Вы говорите О СЕБЕ. Но человек пришел не за вами. Он пришел за решением СВОЕЙ проблемы. Пока вы рассказываете о своих регалиях, он уже потерял интерес.</p>
+        </div>
+        
+        <div class="example-box example-right">
+            <div class="example-label">✅ КАК НАДО:</div>
+            <p><strong>«Расскажите, что вас привело? С чем сейчас столкнулись? Что хотели бы изменить?»</strong></p>
+            <p><strong>Что происходит?</strong> Вы СРАЗУ переводите фокус на человека. Вы показываете: «Мне интересен ТЫ, а не я». Человек начинает говорить о себе. О своей боли. О том, что не получается.</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 1 • НЕ РАССКАЗЫВАЙТЕ О СЕБЕ</div>
+        <div class="page-number-brutalist">04</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 1 - СТРАНИЦА 2 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-bottom: 100px;">
+        <p>И в этот момент <strong>ВЫ ПОЛУЧАЕТЕ ЗОЛОТО</strong> — вы узнаете:</p>
+        
+        <ul>
+            <li>С чем он реально столкнулся</li>
+            <li>Что его беспокоит больше всего</li>
+            <li>Какими словами он описывает проблему</li>
+            <li>Что он уже пробовал</li>
+        </ul>
+        
+        <h3>И вот тут КРИТИЧЕСКИ ВАЖНО:</h3>
+        
+        <div class="black-box">
+            <h3 style="color: white;">НЕ ОСТАНАВЛИВАЙТЕСЬ НА ПЕРВОМ ЗАПРОСЕ!</h3>
+        </div>
+        
+        <p>Человек говорит: «Я хочу наладить отношения с мужем».</p>
+        
+        <p>Стоп. Это НЕ настоящий запрос. Это симптом.</p>
+        
+        <p><strong>Копайте глубже:</strong></p>
+        
+        <div class="example-box example-right">
+            <p><strong>«А что значит для вас "наладить"? Как бы выглядели отношения, если бы они были налаженными? Что было бы по-другому?»</strong></p>
+        </div>
+        
+        <p>Человек может сказать: «Ну... мы бы больше разговаривали», «Он бы меня слышал», «Я бы чувствовала себя важной».</p>
+        
+        <p>ВОТ ЭТО УЖЕ БЛИЖЕ К ИСТИНЕ. Но и это еще не всё.</p>
+        
+        <div class="example-box example-right">
+            <p><strong>«А когда вы в последний раз чувствовали себя важной? Что тогда было? И что изменилось?»</strong></p>
+        </div>
+        
+        <p>И тут может выясниться настоящее:</p>
+        
+        <p style="font-style: italic;">«После рождения ребенка я перестала чувствовать себя женщиной. Я только мама. И мне страшно, что я потеряла себя».</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">ВОТ ЭТО — НАСТОЯЩИЙ ЗАПРОС. Не «наладить отношения». А «вернуть себя, свою идентичность, ощущение ценности».</p>
+        </div>
+        
+        <p><strong>И вот когда вы ВЫЯВИЛИ НАСТОЯЩИЙ ЗАПРОС — человек уже на крючке.</strong></p>
+        
+        <p>Почему? Потому что вы единственный специалист, который докопался до сути.</p>
+        
+        <p>Все остальные говорили: «Ок, будем налаживать отношения». А вы показали: <strong>«Я вижу, что на самом деле происходит».</strong></p>
+        
+        <div class="sense-box">
+            <div class="sense-label">→ МЕТОД SENSE</div>
+            <p>Кстати, это ровно то, что происходит на этапе <strong>Structure</strong> в методе SENSE — структурирование пути клиента через выявление ИСТИННОГО запроса. Когда у вас есть система, вы не гадаете «а тот ли это запрос». Вы ЗНАЕТЕ, как докопаться до настоящего.</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 1 • ВЫЯВЛЕНИЕ ЗАПРОСА</div>
+        <div class="page-number-brutalist">05</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 2 - СТРАНИЦА 1 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-top: 40px; padding-bottom: 100px;">
+        <div class="rule-section">
+            <div class="rule-grid">
+                <div class="rule-number-box">2</div>
+                <div class="rule-content-box">
+                    <div class="rule-title">НЕ ПРЕДЛАГАЙТЕ РЕШЕНИЕ. ВЫЯВЛЯЙТЕ МОТИВАЦИЮ</div>
+                    <div class="rule-subtitle">Пока у человека нет мотивации — любое решение будет «может быть»</div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Что это значит:</h3>
+        
+        <p>Вы выявили запрос. Человек рассказал, с чем пришел. И тут большинство специалистов делают вторую ошибку — они сразу начинают предлагать решение:</p>
+        
+        <p>«Отлично! Мы с вами будем работать так-то, применим метод X, сделаем упражнение Y, и через N сессий вы получите результат!»</p>
+        
+        <p>Звучит логично, да? НЕТ. ЭТО НЕ РАБОТАЕТ.</p>
+        
+        <p>Потому что человек еще НЕ ГОТОВ к решению. Он пока не понимает: <strong>«А ЗАЧЕМ мне вообще это решать? Что будет, если я не решу?»</strong></p>
+        
+        <p>Пока у человека нет МОТИВАЦИИ — любое решение будет выглядеть как «ну, может быть, попробую». А «может быть» = не купит.</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">ВАША ЗАДАЧА ПЕРЕД ТЕМ, КАК ПРЕДЛОЖИТЬ РЕШЕНИЕ — УСИЛИТЬ БОЛЬ. НЕ ПРИЧИНИТЬ БОЛЬ. А ПОМОЧЬ ЧЕЛОВЕКУ ОСОЗНАТЬ, ЧТО БУДЕТ, ЕСЛИ ОН НЕ РЕШИТ ПРОБЛЕМУ.</p>
+        </div>
+        
+        <div class="example-box example-wrong">
+            <div class="example-label">❌ КАК ОБЫЧНО ДЕЛАЮТ:</div>
+            <p><strong>«Понятно, вы хотите вернуть себя. Отлично! Я как раз работаю с этим. Мы будем делать то-то и то-то, и через 10 сессий вы точно почувствуете изменения!»</strong></p>
+            <p><strong>Почему плохо?</strong> Вы ПРЫГНУЛИ к решению. Но человек еще не понял: «А что, если я НЕ буду это решать? Что тогда?»</p>
+        </div>
+        
+        <div class="example-box example-right">
+            <div class="example-label">✅ КАК НАДО:</div>
+            <p><strong>«Скажите, а как долго вы уже живете с этим ощущением потерянности? Год? Два? А как вам кажется, что будет через год, если ничего не изменится? Где вы будете? Что почувствуете?»</strong></p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 2 • ВЫЯВЛЯЙТЕ МОТИВАЦИЮ</div>
+        <div class="page-number-brutalist">06</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 2 - СТРАНИЦА 2 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-bottom: 100px;">
+        <h3>Что происходит?</h3>
+        
+        <p>Вы НЕ пугаете. Вы НЕ манипулируете. Вы просто <strong>ПОМОГАЕТЕ ЧЕЛОВЕКУ УВИДЕТЬ</strong> последствия бездействия.</p>
+        
+        <p>И человек может сказать:</p>
+        
+        <p style="font-style: italic;">«Господи... Через год? Я буду еще больше потерянной. Ребенку будет 3 года, а я так и не вернусь к себе. Муж вообще перестанет видеть во мне женщину. И я... Я просто превращусь в функцию. В маму и домохозяйку. Без себя».</p>
+        
+        <p><strong>ВОТ ЭТО — ОСОЗНАНИЕ.</strong> Человек САМ увидел цену бездействия.</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">И теперь вопрос «начинать или не начинать» звучит по-другому: Не «а стоит ли тратить деньги на коуча», а «МОГУ ЛИ Я ПОЗВОЛИТЬ СЕБЕ ЕЩЕ ГОД ЖИТЬ ТАК?»</p>
+        </div>
+        
+        <h3>А теперь копаем дальше:</h3>
+        
+        <div class="example-box example-right">
+            <p><strong>«А скажите, а что даст вам возвращение себя? Представьте — вы проснулись через 3 месяца, и вы СНОВА чувствуете себя собой. Что изменится? Что вы почувствуете?»</strong></p>
+        </div>
+        
+        <p>Человек: «Я... Я снова буду чувствовать себя живой. Я буду хотеть что-то делать. Муж снова будет смотреть на меня с интересом. Я перестану злиться на ребенка за то, что он забрал мою жизнь. Я буду хорошей мамой не из долга, а от радости».</p>
+        
+        <p><strong>ВОТ ЭТО — МОТИВАЦИЯ.</strong> Человек САМ нарисовал картину желаемого будущего.</p>
+        
+        <p>И теперь у него есть:</p>
+        
+        <div class="grid-2">
+            <div class="grid-item">
+                <h4>БОЛЬ</h4>
+                <p>Что будет, если не решу</p>
+            </div>
+            <div class="grid-item">
+                <h4>МЕЧТА</h4>
+                <p>Что будет, если решу</p>
+            </div>
+        </div>
+        
+        <p>И между этими двумя точками — <strong>ОГРОМНОЕ НАПРЯЖЕНИЕ</strong>.</p>
+        
+        <p>Человек хочет из точки А (боль) попасть в точку Б (мечта). И единственное, что ему нужно — <strong>МОСТ</strong>.</p>
+        
+        <p style="font-size: 24px; font-weight: 700; color: var(--teal);">И ЭТИМ МОСТОМ СТАНОВИТЕСЬ ВЫ.</p>
+        
+        <p>Вам даже не нужно продавать. Человек УЖЕ хочет.</p>
+        
+        <div class="sense-box">
+            <div class="sense-label">→ МЕТОД SENSE</div>
+            <p>Кстати, это ровно то, что происходит на этапе <strong>Explore</strong> в методе SENSE — исследование корневых проблем и мотивации. Когда у вас есть четкая система выявления не только запроса, но и мотивации — человек САМ понимает: «Мне это жизненно необходимо».</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 2 • МОТИВАЦИЯ</div>
+        <div class="page-number-brutalist">07</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 3 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-top: 40px; padding-bottom: 100px;">
+        <div class="rule-section">
+            <div class="rule-grid">
+                <div class="rule-number-box">3</div>
+                <div class="rule-content-box">
+                    <div class="rule-title">НЕ ОБЪЯСНЯЙТЕ ЦЕННОСТЬ. СОЗДАВАЙТЕ МОМЕНТЫ ОСОЗНАНИЯ</div>
+                    <div class="rule-subtitle">Ценность нельзя объяснить. Ценность нужно показать</div>
+                </div>
+            </div>
+        </div>
+        
+        <p>Вы выявили запрос. Вы выявили мотивацию. Человек ГОТОВ. И тут большинство специалистов делают третью ошибку — они начинают ОБЪЯСНЯТЬ, как круто они работают.</p>
+        
+        <p>И человек... теряется. Потому что ВЫ ГОВОРИТЕ О СЕБЕ. А ему нужно понять: <strong>«А КОНКРЕТНО ДЛЯ МЕНЯ это сработает?»</strong></p>
+        
+        <div class="example-box example-right">
+            <div class="example-label">✅ КАК НАДО:</div>
+            <p><strong>«Хорошо, давайте прямо сейчас попробуем. Вы говорите, что потеряли себя. А скажите, а кто вы БЕЗ роли мамы? Если бы завтра ребенок волшебным образом вырос и ушел жить отдельно — кто бы осталась ВЫ?»</strong></p>
+        </div>
+        
+        <p><strong>Что происходит?</strong> Вы НЕ РАССКАЗЫВАЕТЕ о методе. Вы <strong>ПРИМЕНЯЕТЕ метод прямо здесь и сейчас</strong>.</p>
+        
+        <p>Вы задаете вопрос, который <strong>ЗАПУСКАЕТ ПРОЦЕСС ОСОЗНАНИЯ</strong>.</p>
+        
+        <p>Человек может растеряться: «Я... Не знаю. Я не думала об этом. Я...»</p>
+        
+        <p>И тут — ИНСАЙТ: «Господи. Я правда не знаю, кто я. Я настолько слилась с ролью мамы, что вообще потеряла себя».</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">ВОТ ЭТО — МОМЕНТ ОСОЗНАНИЯ. Человек САМ, прямо на встрече, ПРОЖИЛ кусочек работы с вами. Он не УСЛЫШАЛ о вашей ценности. Он ОЩУТИЛ её на себе.</p>
+        </div>
+        
+        <p><strong>И это в 1000 раз сильнее любых объяснений.</strong></p>
+        
+        <p>После такого момента человек думает не «а вдруг не сработает», а <strong>«БОЖЕ, МНЕ ТАК НУЖНА ЭТА РАБОТА»</strong>.</p>
+        
+        <div class="sense-box">
+            <div class="sense-label">→ МЕТОД SENSE</div>
+            <p>Кстати, когда у вас есть метод SENSE, вы не гадаете «а какой вопрос задать». На этапе <strong>Navigate</strong> вы четко понимаете: какой вопрос приведет человека к осознанию. И тогда первая встреча превращается не в «рассказ о себе», а в <strong>ДЕМОНСТРАЦИЮ РЕЗУЛЬТАТА ПРЯМО ЗДЕСЬ</strong>.</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 3 • СОЗДАВАЙТЕ ОСОЗНАНИЕ</div>
+        <div class="page-number-brutalist">08</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 4 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-top: 40px; padding-bottom: 100px;">
+        <div class="rule-section">
+            <div class="rule-grid">
+                <div class="rule-number-box">4</div>
+                <div class="rule-content-box">
+                    <div class="rule-title">НЕ ДОКАЗЫВАЙТЕ СВОЮ КОМПЕТЕНТНОСТЬ</div>
+                    <div class="rule-subtitle">Уверенный специалист не доказывает. Он показывает</div>
+                </div>
+            </div>
+        </div>
+        
+        <p>Многие специалисты боятся, что клиент подумает: «А достаточно ли ты крутой, чтобы мне помочь?»</p>
+        
+        <p>И от этого страха начинают <strong>ДОКАЗЫВАТЬ</strong> свою компетентность: «Я училась 5 лет!», «У меня 3 диплома!», «У меня уже 100 клиентов!»</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">И знаете что? КЛИЕНТУ ВСЁ РАВНО. Его не волнуют ваши дипломы. Его волнует один вопрос: «СМОЖЕШЬ ЛИ ТЫ ПОМОЧЬ МНЕ?»</p>
+        </div>
+        
+        <p>И чем больше вы доказываете компетентность — тем больше он сомневается. Потому что <strong>уверенный специалист не доказывает. Он показывает</strong>.</p>
+        
+        <div class="example-box example-right">
+            <div class="example-label">✅ КАК НАДО:</div>
+            <p><strong>«5 лет работаю, гештальт-терапевт. А вы уже работали с психологом раньше? Какой был опыт?»</strong></p>
+            <p><strong>Что происходит?</strong> Вы НЕ УКЛОНЯЕТЕСЬ от вопроса. Но и НЕ РАЗДУВАЕТЕ его. Вы отвечаете кратко — и сразу переводите внимание обратно на человека.</p>
+        </div>
+        
+        <p>Потому что <strong>ваша компетентность — это не ваши дипломы</strong>.</p>
+        
+        <div class="black-box">
+            <h3 style="color: white;">ВАША КОМПЕТЕНТНОСТЬ — ЭТО ТО, КАК ВЫ ВЕДЕТЕ ВСТРЕЧУ</h3>
+        </div>
+        
+        <p>Если вы задаете точные вопросы, которые приводят к инсайтам, видите настоящий запрос там, где другие видят симптом, создаете моменты осознания прямо на встрече, спокойны, уверены, держите пространство — то человек <strong>САМ ПОНИМАЕТ</strong>: «Это профессионал».</p>
+        
+        <p><strong>А уверенность не доказывается. Она ощущается.</strong></p>
+        
+        <div class="sense-box">
+            <div class="sense-label">→ МЕТОД SENSE</div>
+            <p>Кстати, когда у вас есть структура работы (метод SENSE), вы вообще не думаете о компетентности. Вы просто ведете встречу по системе: выявляете запрос, мотивацию, создаете моменты осознания, показываете путь.</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 4 • НЕ ДОКАЗЫВАЙТЕ</div>
+        <div class="page-number-brutalist">09</div>
+    </div>
+</div>
+
+<!-- ПРАВИЛО 5 -->
+<div class="page">
+    <div class="content-wrapper" style="padding-top: 40px; padding-bottom: 100px;">
+        <div class="rule-section">
+            <div class="rule-grid">
+                <div class="rule-number-box">5</div>
+                <div class="rule-content-box">
+                    <div class="rule-title">НЕ УДЕРЖИВАЙТЕ КЛИЕНТА УГОВОРАМИ</div>
+                    <div class="rule-subtitle">Уговоры — это сигнал отчаяния</div>
+                </div>
+            </div>
+        </div>
+        
+        <p>Встреча подходит к концу. Вы всё сделали правильно: выявили запрос, мотивацию, создали моменты осознания.</p>
+        
+        <p>И тут человек говорит: «Спасибо, мне нужно подумать» или «Я посоветуюсь с мужем и напишу вам».</p>
+        
+        <p>И большинство специалистов в панике начинают <strong>УГОВАРИВАТЬ</strong>: «Давайте не будем тянуть!», «Я могу сделать вам скидку!»</p>
+        
+        <p><strong>ЭТО УБИВАЕТ ВСЮ ЦЕННОСТЬ, КОТОРУЮ ВЫ СОЗДАЛИ.</strong></p>
+        
+        <div class="example-box example-right">
+            <div class="example-label">✅ КАК НАДО:</div>
+            <p><strong>«Хорошо, я уважаю ваше решение. Давайте просто подведем итоги. Вы пришли с тем, что потеряли себя. Мы выяснили, что если ничего не менять — через год вы будете еще глубже в этом состоянии. И что вы хотите вернуть ощущение себя как женщины, а не только как мамы. Верно?»</strong></p>
+        </div>
+        
+        <p>Человек: «Да».</p>
+        
+        <div class="example-box example-right">
+            <p><strong>«Окей. И у вас есть два варианта. Первый — начать работать над этим сейчас. Через 2-3 месяца вы будете в другой точке. Второй вариант — отложить. И тогда вопрос: а когда будет "подходящий момент"? Через месяц? Полгода? Год? И главное — что изменится за это время, чтобы момент стал подходящим?»</strong></p>
+        </div>
+        
+        <p><strong>Что происходит?</strong> Вы <strong>НЕ УГОВАРИВАЕТЕ</strong>. Вы <strong>ТРЕЗВО ПОКАЗЫВАЕТЕ РЕАЛЬНОСТЬ</strong>.</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">«Так когда ты начнешь? Сейчас или потом? И что изменится "потом", чего нет "сейчас"?»</p>
+        </div>
+        
+        <p>Очень часто человек понимает: «А ведь правда. Если не сейчас — то когда? Через полгода будет то же самое, только хуже. Подходящего момента не будет. Либо я начинаю сейчас, либо так и буду жить в этом состоянии».</p>
+        
+        <p>И тогда <strong>ЧЕЛОВЕК САМ ПРИНИМАЕТ РЕШЕНИЕ</strong> — не потому что вы его уговорили, а потому что <strong>САМ ОСОЗНАЛ цену промедления</strong>.</p>
+        
+        <div class="sense-box">
+            <div class="sense-label">→ МЕТОД SENSE</div>
+            <p>Кстати, когда у вас есть система ведения по методу SENSE, человек видит не просто «поработаем как-то», а <strong>ЧЕТКИЙ МАРШРУТ</strong> с конкретными этапами и результатами на каждом шаге.</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ПРАВИЛО 5 • ПОКАЖИТЕ ЦЕНУ УХОДА</div>
+        <div class="page-number-brutalist">10</div>
+    </div>
+</div>
+
+<!-- ЗАВЕРШЕНИЕ -->
+<div class="page">
+    <div class="content-wrapper" style="padding-bottom: 100px;">
+        <h1>ЗАВЕРШЕНИЕ</h1>
+        <h2 style="font-weight: 600;">Самое важное — не донести ценность, а выстроить систему</h2>
+        
+        <p>Вы прочитали 5 правил. И да, они работают.</p>
+        
+        <p>Но вот в чем правда: Если вам постоянно приходится <strong>ДОНОСИТЬ ценность</strong> — значит, проблема не в фразах. Проблема в том, что <strong>у вас нет системы проведения первой встречи</strong>.</p>
+        
+        <div class="black-box">
+            <h3 style="color: white;">А ТЕПЕРЬ ПРЕДСТАВЬТЕ ДРУГОЕ:</h3>
+            <p style="color: white;">У вас есть четкий алгоритм первой встречи</p>
+        </div>
+        
+        <ul>
+            <li>Вы <strong>выявляете настоящий запрос</strong> — не тот, с которым пришли, а тот, который на самом деле волнует</li>
+            <li>Вы <strong>выявляете мотивацию</strong> — помогаете человеку осознать цену бездействия и ценность изменений</li>
+            <li>Вы <strong>создаете моменты осознания</strong> прямо на встрече — человек не слышит о вашей ценности, а ОЩУЩАЕТ её</li>
+            <li>Вы <strong>не доказываете компетентность</strong> — вы просто уверенно ведете встречу</li>
+            <li>Вы <strong>не уговариваете</strong> — вы трезво показываете реальность</li>
+        </ul>
+        
+        <p>Тогда клиенты НЕ уходят «подумать».</p>
+        
+        <div class="black-box">
+            <p class="black-box-quote">ОНИ САМИ ПРОСЯТСЯ В РАБОТУ. ПРЯМО НА ВСТРЕЧЕ.</p>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ЗАВЕРШЕНИЕ</div>
+        <div class="page-number-brutalist">11</div>
+    </div>
+</div>
+
+<!-- CTA ТРЕНИНГ -->
+<div class="page">
+    <div class="content-wrapper" style="padding-bottom: 100px;">
+        <div class="space-title" style="margin-top: 40px;">ЧТО ДЕЛАТЬ ДАЛЬШЕ?</div>
+        
+        <div class="geo-divider-teal"></div>
+        
+        <div class="cta-brutalist">
+            <h3>Пересмотрите тренинг</h3>
+            <p style="font-size: 24px; font-weight: 700; margin-bottom: 20px;">
+                "Как за 5 этапов вести клиента к сильному результату"
+            </p>
+            
+            <p>Там вы увидите полную систему — не только как провести первую встречу, но и как вести клиента от запроса до результата так, чтобы он остался, получил изменения и привел новых клиентов.</p>
+            
+            <p><strong>Там все ответы:</strong></p>
+            <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
+                <li>Как выстроить первую встречу так, чтобы человек САМ попросился в работу?</li>
+                <li>Как работать с клиентом так, чтобы он видел прогресс и оставался надолго?</li>
+                <li>Как получать поток клиентов через рекомендации?</li>
+            </ul>
+            
+            <a href="https://nemarketing.getcourse.ru/wbnr_0810_repeats" class="cta-button" target="_blank">ПОСМОТРЕТЬ ПОВТОР →</a>
+        </div>
+        
+        <div class="geo-divider"></div>
+        
+        <h2 style="text-align: center; margin: 40px 0;">Запишитесь на персональную встречу</h2>
+        
+        <p style="text-align: center; font-size: 20px;">Если вы чувствуете, что готовы внедрить систему в свою практику — приходите на встречу.</p>
+        
+        <div class="grid-2" style="margin: 40px 0;">
+            <div class="grid-item">
+                <p>Как вы сейчас проводите первые встречи и где теряете клиентов</p>
+            </div>
+            <div class="grid-item">
+                <p>Как метод SENSE встроится в вашу работу</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="https://nemarketing.getcourse.ru/sense" class="cta-button" target="_blank">ЗАПИСАТЬСЯ НА ВСТРЕЧУ →</a>
+        </div>
+    </div>
+    
+    <div class="page-footer">
+        <div>ЧТО ДЕЛАТЬ ДАЛЬШЕ</div>
+        <div class="page-number-brutalist">12</div>
+    </div>
+</div>
+
+<!-- ФИНАЛ -->
+<div class="page">
+    <div style="height: 297mm; display: flex; align-items: center; justify-content: center; background: var(--black); color: white; padding: 60px;">
+        <div style="text-align: center; max-width: 80%;">
+            <div style="border: 8px solid white; padding: 60px;">
+                <p style="font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 40px; color: white; text-transform: uppercase;">
+                    КЛИЕНТАМ НЕ НУЖНО ДОНОСИТЬ ЦЕННОСТЬ
+                </p>
+                
+                <p style="font-size: 32px; font-weight: 600; margin-bottom: 60px; color: white;">
+                    ИМ НУЖНО СОЗДАТЬ УСЛОВИЯ ДЛЯ ОСОЗНАНИЯ
+                </p>
+                
+                <div style="height: 4px; background: var(--teal); margin: 60px auto; width: 200px;"></div>
+                
+                <p style="font-size: 28px; margin-bottom: 20px; color: white;">ДО ВСТРЕЧИ!</p>
+                <p style="font-size: 20px; color: rgba(255,255,255,0.8);">Вячеслав НЕмаркетинг</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
